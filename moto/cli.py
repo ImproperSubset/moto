@@ -67,6 +67,24 @@ def _ingest_upstream_channels(channels, influx, progress):
         progress.update(task, advance=1)
 
 
+def _print_logs(logs, progress):
+    table = Table(
+        "Timestamp",
+        "Level",
+        "Message",
+        title="Modem Logs",
+    )
+
+    for log in sorted(logs, key=lambda x: x.timestamp):
+        table.add_row(
+            log.timestamp.strftime("%Y-%m-%d %H:%M:%S"),
+            log.level,
+            log.message,
+        )
+
+    progress.console.print(table)
+
+
 def _print_downstream_channels(channels, progress):
     table = Table(
         "Channel",
@@ -159,6 +177,9 @@ def dump():
 
         channels = _get_upstream_channels(moto, progress)
         _print_upstream_channels(channels, progress)
+
+        logs = _get_logs(moto, progress)
+        _print_logs(logs, progress)
 
 
 def _ingest():
