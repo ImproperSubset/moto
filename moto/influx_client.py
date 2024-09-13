@@ -39,7 +39,7 @@ class InfluxClient:  # pylint: disable=too-few-public-methods
         org: str | None = None,
         bucket: str | None = None,
     ):
-        self._url = url or os.environ.get("INFLUXDB_URL", "http://localhost:8086")
+        self._url = url or os.environ.get("INFLUXDB_URL", "http://172.24.96.1:8086")
         self._token = token or os.environ["INFLUXDB_TOKEN"]
         self._org = org or os.environ["INFLUXDB_ORG"]
         self._bucket = bucket or os.environ["INFLUXDB_BUCKET"]

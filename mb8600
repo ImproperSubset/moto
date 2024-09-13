@@ -1,0 +1,11 @@
+#!/bin/bash
+
+export MOTO_USERNAME=admin
+export MOTO_HOSTNAME=192.168.100.1
+export MOTO_PASSWORD=LifebWs
+export INFLUXDB_ORG="House Hudson"
+export INFLUXDB_BUCKET=house-hudson
+export INFLUXDB_TOKEN=BNuPiSMF6xSKVtvRjpWDPGso_p5fjYLiIlciJfK8U1bqGDeCd-YCNN-O1I0O5_icBHhfEOV1RwaHB6A6m9I6-A==
+
+python -m moto run
+
